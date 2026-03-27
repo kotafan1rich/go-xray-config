@@ -34,22 +34,23 @@ func (xc *XrayClient) Str(clientInbound XrayInbound, host string, publicKey stri
 }
 
 type XraySettings struct {
-	Clients    []XrayClient `json:"clients"`
-	Decryption string       `json:"decryption" default:"none"`
-	Auth       string       `json:"auth omiempty"`
-	Udp        bool         `json:"udp omitempty"`
+	Clients    []XrayClient `json:"clients,omitempty"`
+	Decryption string       `json:"decryption,omitempty" default:"none"`
+	Auth       string       `json:"auth,omitempty"`
+	Udp        bool         `json:"udp,omitempty"`
+	Accounts	[]any        `json:"accounts,omitempty"`
 }
 
 type XrayRealitySettings struct {
-	PrivateKey  string   `json:"privateKey" required:"true"`
-	ShortIDs    []string `json:"shortIds" required:"true"`
-	ServerNames []string `json:"serverNames" required:"true"`
-	Dest        string   `json:"dest" default:"www.cloudflare.com:443"`
+	PrivateKey  string   `json:"privateKey,omitempty"`
+	ShortIDs    []string `json:"shortIds,omitempty"`
+	ServerNames []string `json:"serverNames,omitempty"`
+	Dest        string   `json:"dest,omitempty"`
 }
 
 type XrayStreamSettings struct {
-	Network         string              `json:"network" default:"tcp"`
-	Security        string              `json:"security" default:"reality"`
+	Network         string              `json:"network,omitempty"`
+	Security        string              `json:"security,omitempty"`
 	RealitySettings XrayRealitySettings `json:"realitySettings"`
 }
 
