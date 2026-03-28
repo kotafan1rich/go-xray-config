@@ -38,7 +38,7 @@ type XraySettings struct {
 	Decryption string       `json:"decryption,omitempty" default:"none"`
 	Auth       string       `json:"auth,omitempty"`
 	Udp        bool         `json:"udp,omitempty"`
-	Accounts	[]any        `json:"accounts,omitempty"`
+	Accounts   []any        `json:"accounts,omitempty"`
 }
 
 type XrayRealitySettings struct {
@@ -49,16 +49,16 @@ type XrayRealitySettings struct {
 }
 
 type XrayStreamSettings struct {
-	Network         string              `json:"network,omitempty"`
-	Security        string              `json:"security,omitempty"`
-	RealitySettings XrayRealitySettings `json:"realitySettings"`
+	Network         string               `json:"network,omitempty"`
+	Security        string               `json:"security,omitempty"`
+	RealitySettings *XrayRealitySettings `json:"realitySettings,omitempty"`
 }
 
 type XrayInbound struct {
-	Port           int                `json:"port"`
-	Protocol       string             `json:"protocol"`
-	Settings       XraySettings       `json:"settings"`
-	StreamSettings XrayStreamSettings `json:"streamSettings"`
+	Port           int                 `json:"port"`
+	Protocol       string              `json:"protocol"`
+	Settings       XraySettings        `json:"settings"`
+	StreamSettings *XrayStreamSettings `json:"streamSettings,omitempty"`
 }
 
 type XRayConfig struct {
